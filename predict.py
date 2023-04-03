@@ -29,7 +29,6 @@ import replicate as rep
 
 import random
 
-from lora_diffusion import LoRAManager, monkeypatch_remove_lora
 from t2i_adapters import Adapter
 from t2i_adapters import patch_pipe as patch_pipe_t2i_adapter
 
