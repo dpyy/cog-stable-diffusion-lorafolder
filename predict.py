@@ -29,9 +29,6 @@ import replicate as rep
 
 import random
 
-from t2i_adapters import Adapter
-from t2i_adapters import patch_pipe as patch_pipe_t2i_adapter
-
 from PIL import Image
 
 from hashlib import sha512
