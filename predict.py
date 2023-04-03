@@ -169,7 +169,7 @@ class Predictor(BasePredictor):
 
             for lora, weight in self.activeloras.items():
                 print("Applying " + lora + " at weight " + str(weight))
-                apply_lora(self, "/loras/" + lora, alpha=weight)
+                apply_lora(self, "loras/" + lora, alpha=weight)
 
         self.pipe = self.pipe.to("cuda")
         
@@ -206,7 +206,7 @@ class Predictor(BasePredictor):
     
     
 def lora_folder(self):
-    for filename in os.listdir("/loras"):
+    for filename in os.listdir("loras"):
         lora_id = filename.split(".")[0] if "." in filename else filename
         self.loralist.append(lora_id)
 
