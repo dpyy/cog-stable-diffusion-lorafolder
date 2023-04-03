@@ -37,7 +37,7 @@ import time
 import re
 import copy
 
-MODEL_ID = "runwayml/stable-diffusion-v1-5"
+MODEL_ID = "Lykon/DreamShaper"
 MODEL_CACHE = "diffusers-cache"
 
 class Predictor(BasePredictor):
@@ -49,7 +49,7 @@ class Predictor(BasePredictor):
         self.pipebackup = None
 
         # Download the weights at runtime so you don't have to upload them to replicate with every push
-        subprocess.run("python3 script/download-weights", shell=True, check=True)
+        # subprocess.run("python3 script/download-weights", shell=True, check=True)
         
         print("Loading pipeline...")
         self.pipe = DiffusionPipeline.from_pretrained(

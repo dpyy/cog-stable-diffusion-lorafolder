@@ -10,7 +10,7 @@ from huggingface_hub import snapshot_download
 MODEL_CACHE = "diffusers-cache"
 
 
-model_list = ["runwayml/stable-diffusion-v1-5"]
+model_list = ["Lykon/DreamShaper"]
 
 for model in model_list:
     if os.path.exists(MODEL_CACHE):
