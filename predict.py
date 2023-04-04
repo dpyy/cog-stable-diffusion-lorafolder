@@ -37,7 +37,7 @@ import time
 import re
 import copy
 
-MODEL_ID = "Lykon/DreamShaper"
+MODEL_ID = "nomnomnomz/dreamshaper_lora"
 MODEL_CACHE = "diffusers-cache"
 
 class Predictor(BasePredictor):
