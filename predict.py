@@ -114,6 +114,7 @@ class Predictor(BasePredictor):
         seed: int = Input(
             description="Random seed. Leave blank to randomize the seed", default=None
         ),
+        init_image: Path = Input(description="Initial image to use", default=None),
     ) -> List[Path]:
         if self.pipebackup != None:
             self.pipe = self.pipebackup
@@ -178,7 +179,8 @@ class Predictor(BasePredictor):
         self.pipe.scheduler = make_scheduler(scheduler, self.pipe.scheduler.config)
 
         generator = torch.Generator("cuda").manual_seed(seed)
-        output = self.pipe.text2img(
+        if init_image == None:
+            output = self.pipe.text2img(
                 prompt=[prompt] * num_outputs if prompt is not None else None,
                 negative_prompt=[negative_prompt] * num_outputs if negative_prompt is not None else None,
                 width=width,
@@ -186,6 +188,17 @@ class Predictor(BasePredictor):
                 guidance_scale=guidance_scale,
                 generator=generator,
                 num_inference_steps=num_inference_steps
+            )
+       else:
+            output = self.pipe.img2img(
+                prompt=[prompt] * num_outputs if prompt is not None else None,
+                negative_prompt=[negative_prompt] * num_outputs if negative_prompt is not None else None,
+                guidance_scale=guidance_scale,
+                generator=generator,
+                num_inference_steps=num_inference_steps,
+                **extra_kwargs,
+                "image": Image.open(init_image).convert("RGB"),
+                "strength": prompt_strength,
             )
 
         output_paths = []
