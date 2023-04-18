@@ -189,7 +189,7 @@ class Predictor(BasePredictor):
                 generator=generator,
                 num_inference_steps=num_inference_steps
             )
-       else:
+        else:
             output = self.pipe.img2img(
                 prompt=[prompt] * num_outputs if prompt is not None else None,
                 negative_prompt=[negative_prompt] * num_outputs if negative_prompt is not None else None,
@@ -200,7 +200,7 @@ class Predictor(BasePredictor):
                 "image": Image.open(init_image).convert("RGB"),
                 "strength": prompt_strength,
             )
-
+            
         output_paths = []
         for i, sample in enumerate(output.images):
             if output.nsfw_content_detected and output.nsfw_content_detected[i]:
