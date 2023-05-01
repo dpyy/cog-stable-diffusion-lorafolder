@@ -196,8 +196,8 @@ class Predictor(BasePredictor):
                 guidance_scale=guidance_scale,
                 generator=generator,
                 num_inference_steps=num_inference_steps,
-                image: Image.open(init_image).convert("RGB"),
-                strength: prompt_strength,
+                image=Image.open(init_image).convert("RGB"),
+                strength=prompt_strength,
             )
             
         output_paths = []
