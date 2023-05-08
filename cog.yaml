@@ -12,7 +12,7 @@ build:
     - "safetensors"
     - "requests"
     - "wget"
-    - "diffusers==0.11.1"
+    - "diffusers >= 0.16.0"
     - "torch==1.13.0"
     - "ftfy==6.1.1"
     - "scipy==1.9.3"
